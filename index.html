@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Okada Riders ID Card </title>
+  <style>
+    :root{--card-w:900px;--card-h:550px;--blue:#cdeef1;--accent:#9fd6d9}
+    body{font-family: 'Arial', Helvetica, sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:20px;background:#f3f6f7}
+    .card{width:var(--card-w);height:var(--card-h);background:linear-gradient(180deg,var(--blue),#dff6f8);border-radius:16px;padding:28px;box-shadow:0 12px 30px rgba(0,0,0,.15);position:relative;overflow:hidden}
+    /* rainbow stripe */
+    .stripe{position:absolute;left:-120px;top:-40px;width:520px;height:150px;background:linear-gradient(90deg,#ff4d4d,#ffb84d,#ffff4d,#4dff88,#4dd0ff);transform:rotate(-15deg);opacity:.18;border-radius:40px}
+    header{display:block;text-align:center;margin-bottom:6px}
+    header h1{font-size:34px;margin:8px 0 2px;letter-spacing:2px}
+    header h2{font-size:18px;margin:0;font-weight:600}
+    .content{display:flex;gap:20px;height:calc(100% - 110px)}
+    .left{flex:1;padding:12px 8px}
+    .labels{display:grid;grid-template-columns:220px auto;row-gap:10px;align-items:center}
+    .label{font-weight:700;color:#08323a;padding:6px 12px}
+    .value{background:linear-gradient(90deg,#ffffff80,#ffffff60);padding:9px 14px;border-radius:8px;font-weight:800;letter-spacing:1px;color:#07343b}
+    .photo{width:260px;flex:0 0 260px;display:flex;align-items:center;justify-content:center}
+    .photo .frame{width:200px;height:240px;border:6px solid rgba(0,0,0,.25);background:#fff;display:flex;align-items:center;justify-content:center}
+    .photo img{max-width:100%;max-height:100%;object-fit:cover;display:block}
+    .logo{position:absolute;right:28px;top:18px;width:72px;height:72px;border-radius:50%;background:rgba(15, 1, 1, 0.9);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);font-weight:700;color:#074048}
+    /* small foot text */
+    .footer{position:absolute;left:28px;bottom:18px;font-weight:700;color:#08323a}
+    /* responsive */
+    @media (max-width:980px){
+      :root{--card-w:680px}
+      .photo{flex:0 0 220px}
+    }
+    @media (max-width:560px){
+      .content{flex-direction:column}
+      .photo{order:-1;align-self:center}
+      .labels{grid-template-columns:150px 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="id-card">
+    
+    <div class="logo"><img src="h2.jpg" height="50px" width="50px" alt="" /></div>
+    <header>
+      <h1> IDENTIFICATION CARD </h1>
+      
+    </header>
+
+    <div class="content">
+      <div class="left">
+        <div class="labels">
+          <div class="label">SURNAME:</div>
+          <div class="value" id="surname">YAMOAH</div>
+
+          <div class="label">FIRSTNAME:</div>
+          <div class="value" id="firstname">RICHARD</div>
+
+          <div class="label">TOWN :</div>
+          <div class="value" id="town">KASOA</div>
+
+          <div class="label">REGION :</div>
+          <div class="value" id="region">CENTRAL</div>
+
+          <div class="label">MUNICIPAL :</div>
+          <div class="value" id="municipal">AWUTU SENYA EAST</div>
+
+          <div class="label">STATION :</div>
+          <div class="value" id="station">MARKET JUNCTION</div>
+
+          <div class="label">PHONE NUMBER :</div>
+          <div class="value" id="phone NUMBER">+233 549132017</div>
+
+          <div class="label">EMERGENCY NUMBER:</div>
+          <div class="value" id="phone NUMBER">+233 549132017</div>
+
+          <div class="label">POSITION :</div>
+          <div class="value" id="position">MEMBER</div>
+
+        </div>
+      </div>
+
+      <div class="photo">
+        <!-- replace the src below with your photo or the provided image path -->
+        <div class="frame">
+          <img src="idea.jpg" alt="photo" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">Slyceedelivery</div>
+  </div>
+
+  <!-- Optional: small script to make text editable in-place for quick edits -->
+  <script>
+    // double-click any value box to edit and press Enter to save
+    document.querySelectorAll('.value').forEach(el=>{
+      el.addEventListener('dblclick',()=>{
+        const cur = el.textContent.trim();
+        const input = document.createElement('input');
+        input.value = cur; input.style.width = '100%'; input.style.fontWeight = '800';
+        el.replaceWith(input);
+        input.focus();
+        input.addEventListener('blur',()=>{el.textContent = input.value||cur; input.replaceWith(el)});
+        input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){input.blur()} });
+      })
+    })
+  </script>
+</body>
+</html>
